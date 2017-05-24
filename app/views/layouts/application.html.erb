@@ -50,13 +50,23 @@
 
           <li><a href="/photos">Photos</a></li>
 
-          <li><a href="/rails/info">Sitemap</a></li>
+          <li><a href="/users">Users</a></li>
+          <!-- <li><a href="/rails/info">Sitemap</a></li> -->
 
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
+          <% if current_user == nil %>
+          <li><a href="/users/sign_up"> Sign Up</a></li>
+          <li><a href="/users/sign_in">Sign In</a></li>
+
+          <% else%>
+          <li><a href="/users/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= current_user.username %> </a></li>
+          <li><a href="/users/<%= current_user.id%>">Your profile</a></li>
+          <li><a href="/my_likes">Your likes</a></li>
+          <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a></li>
+
+          <%end%>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>

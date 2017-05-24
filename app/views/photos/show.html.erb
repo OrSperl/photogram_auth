@@ -5,17 +5,25 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @photo.caption %> by <%= @photo.user.username %></h3>
+        </div>
+        <div class="panel-body">
+          <img src="<%= @photo.image %>" class="img-responsive">
+          <%= time_ago_in_words(@photo.created_at) %>
+        </div>
+      </div>
+      <!-- <dt>Caption</dt>
+      <dd></dd> -->
 
-      <dt>Caption</dt>
-      <dd><%= @photo.caption %></dd>
-
-
+<!--
       <dt>Image</dt>
-      <dd><%= @photo.image %></dd>
+      <dd></dd>
 
 
       <dt>User</dt>
-      <dd><%= @photo.user_id %></dd>
+       -->
 
 
     </dl>
@@ -25,6 +33,7 @@
       <a href="/photos" class="btn btn-primary">
         Back
       </a>
+      <% if @photo.user_id==current_user.id %>
 
       <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
         Edit
@@ -32,7 +41,7 @@
       <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
-
+      <% end %>
 
     </div>
   </div>

@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h3>Your likes</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+
+
+      <ul>
+
+      <% @user.likes.each do |like| %>
+      <dd>Photo #<%= like.photo.id %></dd>
+      <dd><img src="<%= like.photo.image %>" ></dd>
+      <dd><%= like.photo.caption %></dd>
+      <% end %>
+    </ul>
+
+
+    </dl>
+
+
+  </div>
+</div>

@@ -1,16 +1,20 @@
-class PhotosController < ApplicationController
-  # skip_before_action :authenticate_user!, :only => [:index, :show]
+class UsersController < ApplicationController
   def index
-    @photos = Photo.all
-    @comment = Comment.new
+    @users = User.all
 
-    render("photos/index.html.erb")
+    render("users/index.html.erb")
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @user = User.find(params[:id])
 
-    render("photos/show.html.erb")
+    render("users/show.html.erb")
+  end
+
+  def my_likes
+    @user = User.find(current_user.id)
+
+    render("/my_likes.html.erb")
   end
 
   def new
